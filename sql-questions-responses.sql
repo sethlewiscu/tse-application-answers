@@ -13,6 +13,12 @@ from users
 join tasks on users.user_id = tasks.created_by
 left join permissions on tasks.task_id = permissions.task_id 
 and users.user_id = permissions.user_id
-where permissions.can_edit = 0;
+where permissions.can_edit = FALSE;
 
 -- Bonus: Write an SQL script that restores edit permissions for a user if they have created a task but lost the edit permission.
+-- update permisisons.can_edit = 1;
+-- from permissions
+-- join users on users.user_id = tasks.created_by
+-- left join permissions on tasks.task_id = permissions.task_id 
+-- and users.user_id = permissions.user_id
+-- where permissions.can_edit = 0;
