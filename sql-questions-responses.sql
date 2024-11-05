@@ -1,7 +1,7 @@
 -- 1.) Find all tasks that a user (identified by user_id) has access to but does not have permission to edit.
 
 --  -- By "has access to", I assume that means "created" since the only options are "created_by" and "can_edit"
-select task_id, user_id, permissions.can_edit
+select tasks.task_id, users.user_id, permissions.can_edit
 from users, tasks, permissions
 where users.user_id = tasks.created_by and
 permissions.user_id = tasks.created_by;
