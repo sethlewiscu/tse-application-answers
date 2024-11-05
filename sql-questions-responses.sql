@@ -5,7 +5,7 @@ select tasks.task_id, users.user_id, users.name, permissions.can_edit
 from users, tasks, permissions
 where users.user_id = tasks.created_by and
 permissions.user_id = tasks.created_by and
-permissions.can_edit = 1;
+permissions.can_edit = TRUE;
 
 -- 2.) Find all users who have created tasks but do not have permission to edit them.
 
