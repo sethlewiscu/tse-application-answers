@@ -11,10 +11,11 @@ permissions.can_edit = TRUE;
 select users.user_id, users.name, task_name
     from users, tasks
     where users.user_id
-    in
-    (
-        select created_by from tasks, users 
-        where users.user_id = tasks.created_by
-    );
+    join tasks on users.user_id = tasks.created_by
+    where permissions.can_edit = 0;
+    -- (
+    --     select created_by from tasks, users 
+    --     where users.user_id = tasks.created_by
+    -- );
 
 -- Bonus: Write an SQL script that restores edit permissions for a user if they have created a task but lost the edit permission.
