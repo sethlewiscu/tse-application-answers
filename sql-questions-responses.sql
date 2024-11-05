@@ -21,9 +21,9 @@ set can_edit = 1
 where (user_id, task_id) 
 in
 (   select tasks.created_by, tasks.task_id
-    from tasks
-    join tasks on users.user_id = tasks.created_by
-    left join permissions on tasks.task_id = permissions.task_id 
-    and users.user_id = permissions.user_id
-    where permissions.can_edit = FALSE;
+        from tasks
+        left join permissions 
+        on tasks.task_id = permissions.task_id 
+        and tasks.created_by = permissions.user_id
+        where permissions.can_edit = 0
 );
