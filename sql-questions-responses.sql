@@ -22,5 +22,8 @@ where (user_id, task_id)
 in
 (   select tasks.created_by, tasks.task_id
     from tasks
-    where permissions.can_edit = 0
+    join tasks on users.user_id = tasks.created_by
+    left join permissions on tasks.task_id = permissions.task_id 
+    and users.user_id = permissions.user_id
+    where permissions.can_edit = FALSE;
 );
