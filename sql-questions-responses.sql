@@ -25,5 +25,5 @@ in
         left join permissions 
         on tasks.task_id = permissions.task_id 
         and tasks.created_by = permissions.user_id
-        where permissions.can_edit = 0
+        where permissions.can_edit = FALSE;
 );
