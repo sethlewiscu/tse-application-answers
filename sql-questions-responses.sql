@@ -17,7 +17,7 @@ where permissions.can_edit = FALSE;
 
 -- Bonus: Write an SQL script that restores edit permissions for a user if they have created a task but lost the edit permission.
 update permissions 
-set can_edit = 1
+set can_edit = TRUE
 where (user_id, task_id) 
 in
 (   select tasks.created_by, tasks.task_id
